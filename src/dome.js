@@ -1,7 +1,8 @@
 import {
     MeshPhongMaterial,
     SphereBufferGeometry,
-    Mesh
+    Mesh,
+    BackSide
 } from 'three';
 
 class Dome {
@@ -13,19 +14,19 @@ class Dome {
         return new MeshPhongMaterial({
             color: color,
             flatShading: true,
-            shininess: 0.1
+            shininess: 0,
+            side: BackSide,
         });
     }
 
     render( size, resolution ) {
         let sphere = new SphereBufferGeometry( size, resolution, resolution );
-        sphere.scale( 1, 1, -1 );
 
         let positions = sphere.attributes.position.array;
 
         let x, y, z, index;
         x = y = z = index = 0;
-        let distRate = 7;
+        let distRate = 25;
 
         for ( let i = 0, l = positions.length - 50; i < l; i ++ ) {
             positions[ index ++ ] += Math.random() * distRate;
@@ -35,7 +36,7 @@ class Dome {
         sphere.verticesNeedUpdate = true;
         sphere.normalsNeedUpdate = true;
 
-        let material = this.getMaterial( 0xffffff );
+        let material = this.getMaterial( 0x333333 );
         let envMesh = new Mesh( sphere, material );
         this.scene.add(envMesh)
     }

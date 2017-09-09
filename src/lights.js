@@ -10,8 +10,8 @@ class Lights {
         this.lights = [];
     }
 
-    createPointLight( x, y, z ) {
-        const light = new PointLight(0xffffff, 0.5);
+    createPointLight( x, y, z, color, intensity ) {
+        const light = new PointLight(color, intensity);
         light.position.x = x;
         light.position.y = y;
         light.position.z = z;

@@ -26,7 +26,7 @@ import Lights from './src/lights';
 
 
 let world = new World();
-world.camera.position.z = 100;
+world.camera.position.z = 140;
 
 document.addEventListener( 'mousemove', event => {
 	// world.updateMouse( event.clientX, event.clientY );
@@ -35,7 +35,7 @@ document.addEventListener( 'mousemove', event => {
 const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
-dome.render( 250, 50 );
+dome.render( 250, 25 );
 
 let floor = new Floor( world.scene );
 floor.render( 500, 20 );
@@ -44,9 +44,10 @@ let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 250, 10, 250 );
-lights.createPointLight( -250, -10, -250 );
-lights.addHemisphereLight( 0xcc00ff, 0x000000 );
+lights.createPointLight( 250, 40, 250, 0xee0011, 1 );
+lights.createPointLight( -250, 40, -250, 0x1100de, 1 );
+lights.createPointLight( 0, -30, -5, 2 );
+lights.addHemisphereLight( 0x2200ff, 0x000000 );
 
 let tau = 0;
 const render = () => {

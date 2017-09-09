@@ -79,7 +79,7 @@ class Logo {
         this.standardMaterial = new MeshStandardMaterial({
             map: null,
             color: 0xffffff,
-            metalness: 1.0,
+            metalness: 0.8,
             roughness: 0.5,
             // envMap: textureEquirec
         });

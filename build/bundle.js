@@ -43986,7 +43986,7 @@ class Logo {
         this.standardMaterial = new MeshStandardMaterial({
             map: null,
             color: 0xffffff,
-            metalness: 1.0,
+            metalness: 0.8,
             roughness: 0.5,
             // envMap: textureEquirec
         });
@@ -44042,19 +44042,19 @@ class Dome {
         return new MeshPhongMaterial({
             color: color,
             flatShading: true,
-            shininess: 0.1
+            shininess: 0,
+            side: BackSide,
         });
     }
 
     render( size, resolution ) {
         let sphere = new SphereBufferGeometry( size, resolution, resolution );
-        sphere.scale( 1, 1, -1 );
 
         let positions = sphere.attributes.position.array;
 
         let x, y, z, index;
         x = y = z = index = 0;
-        let distRate = 7;
+        let distRate = 25;
 
         for ( let i = 0, l = positions.length - 50; i < l; i ++ ) {
             positions[ index ++ ] += Math.random() * distRate;
@@ -44064,7 +44064,7 @@ class Dome {
         sphere.verticesNeedUpdate = true;
         sphere.normalsNeedUpdate = true;
 
-        let material = this.getMaterial( 0xffffff );
+        let material = this.getMaterial( 0x333333 );
         let envMesh = new Mesh( sphere, material );
         this.scene.add(envMesh);
     }
@@ -44079,13 +44079,23 @@ class Floor {
         return new MeshPhongMaterial({
             color: color,
             flatShading: true,
-            shininess: 1
+            shininess: 0.1
         });
     }
 
     render( size, resolution ) {
         const floor = new PlaneGeometry( size, size, resolution, resolution );
-        const floorMesh = new Mesh( floor, this.getMaterial( 0x111111 ) );
+        let distRate = 3;
+
+        for ( let i = 0, l = floor.vertices.length; i < l; i ++ ) {
+            floor.vertices[i].x += Math.random() * distRate;
+            floor.vertices[i].y += 0;//Math.random()*3;
+            floor.vertices[i].z += Math.random() * distRate;
+        }
+        floor.verticesNeedUpdate = true;
+        floor.normalsNeedUpdate = true;
+        
+        const floorMesh = new Mesh( floor, this.getMaterial( 0x444444 ) );
         
         floorMesh.rotateX( -90 * Math.PI / 180 );
         floorMesh.position.y = -35;
@@ -44100,8 +44110,8 @@ class Lights {
         this.lights = [];
     }
 
-    createPointLight( x, y, z ) {
-        const light = new PointLight(0xffffff, 0.5);
+    createPointLight( x, y, z, color, intensity ) {
+        const light = new PointLight(color, intensity);
         light.position.x = x;
         light.position.y = y;
         light.position.z = z;
@@ -44121,7 +44131,7 @@ class Lights {
 }
 
 let world = new World();
-world.camera.position.z = 100;
+world.camera.position.z = 140;
 
 document.addEventListener( 'mousemove', event => {
 	// world.updateMouse( event.clientX, event.clientY );
@@ -44130,7 +44140,7 @@ document.addEventListener( 'mousemove', event => {
 const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
-dome.render( 250, 50 );
+dome.render( 250, 25 );
 
 let floor = new Floor( world.scene );
 floor.render( 500, 20 );
@@ -44139,9 +44149,10 @@ let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 250, 10, 250 );
-lights.createPointLight( -250, -10, -250 );
-lights.addHemisphereLight( 0xcc00ff, 0x000000 );
+lights.createPointLight( 250, 40, 250, 0xee0011, 1 );
+lights.createPointLight( -250, 40, -250, 0x1100de, 1 );
+lights.createPointLight( 0, -30, -5, 2 );
+lights.addHemisphereLight( 0x2200ff, 0x000000 );
 
 let tau = 0;
 const render = () => {
