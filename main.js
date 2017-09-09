@@ -21,6 +21,7 @@ import {OrbitControls} from './extra/OrbitControls.legacy';
 import World from './src/world';
 import Logo from './src/logo';
 import Dome from './src/dome';
+import Floor from './src/floor';
 import Lights from './src/lights';
 
 
@@ -35,6 +36,9 @@ const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
 dome.render( 250, 50 );
+
+let floor = new Floor( world.scene );
+floor.render( 500, 20 );
 
 let logo = new Logo( world.scene );
 logo.render();

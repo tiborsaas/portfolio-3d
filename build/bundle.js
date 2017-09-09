@@ -43920,9 +43920,6 @@ class World {
     }
 }
 
-/**
- * Todo: add this to a group to transform it more easily
- */
 class Logo {
     constructor(scene) {
         this.scene = scene;
@@ -44073,6 +44070,30 @@ class Dome {
     }
 }
 
+class Floor {
+    constructor( scene ) {
+        this.scene = scene;
+    }
+
+    getMaterial( color ) {
+        return new MeshPhongMaterial({
+            color: color,
+            flatShading: true,
+            shininess: 1
+        });
+    }
+
+    render( size, resolution ) {
+        const floor = new PlaneGeometry( size, size, resolution, resolution );
+        const floorMesh = new Mesh( floor, this.getMaterial( 0x111111 ) );
+        
+        floorMesh.rotateX( -90 * Math.PI / 180 );
+        floorMesh.position.y = -35;
+
+        this.scene.add( floorMesh );
+    }
+}
+
 class Lights {
     constructor( scene ) {
         this.scene = scene;
@@ -44110,6 +44131,9 @@ const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
 dome.render( 250, 50 );
+
+let floor = new Floor( world.scene );
+floor.render( 500, 20 );
 
 let logo = new Logo( world.scene );
 logo.render();
