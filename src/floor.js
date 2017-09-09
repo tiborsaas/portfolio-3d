@@ -19,7 +19,7 @@ class Floor {
 
     render( size, resolution ) {
         const floor = new PlaneGeometry( size, size, resolution, resolution );
-        let distRate = 10;
+        let distRate = 11;
 
         for ( let i = 0, l = floor.vertices.length; i < l; i ++ ) {
             floor.vertices[i].x += Math.random() * distRate;
