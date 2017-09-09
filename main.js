@@ -25,23 +25,23 @@ import Lights from './src/lights';
 
 
 let world = new World();
-world.camera.position.z = 10;
+world.camera.position.z = 100;
 
 document.addEventListener( 'mousemove', event => {
-	world.updateMouse( event.clientX, event.clientY );
+	// world.updateMouse( event.clientX, event.clientY );
 });
 
-// const controls = new OrbitControls(world.camera);
+const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
-dome.render( 50, 50 );
+dome.render( 250, 50 );
 
 let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 50, 10, 25 );
-lights.createPointLight( -50, -10, -25 );
+lights.createPointLight( 250, 10, 250 );
+lights.createPointLight( -250, -10, -250 );
 lights.addHemisphereLight( 0xcc00ff, 0x000000 );
 
 let tau = 0;
@@ -55,7 +55,7 @@ const render = () => {
 	});
 	tau += 0.01;
 
-	world.setCamera();
+	// world.setCamera();
 };
 
 render();

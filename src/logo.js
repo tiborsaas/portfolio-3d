@@ -2,7 +2,10 @@ import {
     MeshStandardMaterial,
     TextureLoader,
     CubeGeometry,
+    Shape,
     Mesh,
+    Group,
+    ExtrudeGeometry,
     // constants
     RepeatWrapping
 } from 'three';
@@ -13,12 +16,63 @@ import {
 class Logo {
     constructor(scene) {
         this.scene = scene;
-        // Binary encoded blocks, each hex is a line
-        this.model = [0xfe, 0x82, 0xee, 0x28, 0xee, 0, 0xfe];
+        this.model = {};
         this.standardMaterial = null;
         
         this.createMaterial();
         this.loadTextures();
+    }
+    
+    createLogoShapes() {
+        const logo = new Shape();
+        logo.moveTo(0,0);
+        logo.lineTo(-70,0);
+        logo.lineTo(-70,-30);
+        logo.lineTo(-50,-30);
+        logo.lineTo(-50,-40);
+        logo.lineTo(-70,-40);
+        logo.lineTo(-70,-50);
+        logo.lineTo(-40,-50);
+        logo.lineTo(-40,-20);
+        logo.lineTo(-60,-20);
+        logo.lineTo(-60,-10);
+        logo.lineTo(-10,-10);
+        logo.lineTo(-10,-20);
+        logo.lineTo(-30,-20);
+        logo.lineTo(-30,-50);
+        logo.lineTo(0,-50);
+        logo.lineTo(0,-40);
+        logo.lineTo(-20,-40);
+        logo.lineTo(-20,-30);
+        logo.lineTo(0,-30);
+        logo.lineTo(0,0);
+
+        const bottom = new Shape();
+        bottom.moveTo(0,-60);
+        bottom.lineTo(-70,-60);
+        bottom.lineTo(-70,-70);
+        bottom.lineTo(0,-70);
+        bottom.lineTo(0,-60);
+
+        return { logo, bottom };
+    }
+    
+    createGeometry() {
+        const shapes = this.createLogoShapes();
+
+        const settings = { 
+            amount: 10, 
+            bevelEnabled: true, 
+            bevelSegments: 3, 
+            steps: 5, 
+            bevelSize: 1, 
+            bevelThickness: 1 
+        };
+
+        const logo = new ExtrudeGeometry( shapes.logo, settings );
+        const bottom = new ExtrudeGeometry( shapes.bottom, settings );
+
+        return { logo, bottom };
     }
 
     createMaterial() {
@@ -32,7 +86,7 @@ class Logo {
     }
 
     loadTextures() {
-        let textureLoader = new TextureLoader();
+        const textureLoader = new TextureLoader();
         textureLoader.load( "./assets/Pluto_Normal.jpg", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
@@ -59,21 +113,16 @@ class Logo {
     }
 
     render() {
-        this.model.forEach( (row, y) => {
-            let bin = row.toString(2);
-            while(bin.length < 8) {
-                bin = "0" + bin;
-            }
-            for( let i=0; i<7; i++ ) {
-                if( bin[i] == '1' ) {
-                    const geometry = new CubeGeometry(1, 1, 1, 1, 1, 1);
-                    const mesh = new Mesh(geometry, this.standardMaterial);
-                    mesh.position.x = 3.5 - i;
-                    mesh.position.y = 3.5 - y;
-                    this.scene.add(mesh);
-                }
-            }
-        });
+        const geometries = this.createGeometry();
+        const logo = new Mesh(geometries.logo, this.standardMaterial);
+        const bottom = new Mesh(geometries.bottom, this.standardMaterial);
+        const group = new Group();
+        group.add( logo );
+        group.add( bottom );
+
+        group.position.x = 37;
+        group.position.y = 35;
+        this.scene.add(group);
     }
 }
 

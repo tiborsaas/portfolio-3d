@@ -1,8 +1,7 @@
 import {
     MeshPhongMaterial,
     SphereBufferGeometry,
-    Mesh,
-    FlatShading
+    Mesh
 } from 'three';
 
 class Dome {
@@ -13,7 +12,7 @@ class Dome {
     getMaterial( color ) {
         return new MeshPhongMaterial({
             color: color,
-            shading: FlatShading,
+            flatShading: true,
             shininess: 0.1
         });
     }
