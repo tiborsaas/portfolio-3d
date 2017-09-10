@@ -10,6 +10,8 @@ import {
     RectAreaLightHelper
 } from 'three';
 
+import Noise from '../extra/noise';
+
 /**
  * Creates an emissive cylinder and a matching rect area light
   +---------------+
@@ -21,10 +23,13 @@ class Neon {
     constructor( scene, width, height ) {
         this.scene = scene;
         this.light = null;
+        this.tubeMaterial = null;
+        this.mesh = null;
         this.width = width;
         this.height = height;
-        this.mesh = null;
         this.debugAreaLight = false;
+        this.noise = new Noise();
+        this.time = 0;
     }
 
     createAreaLight() {
@@ -43,11 +48,25 @@ class Neon {
 
     createTube() {
         const material = new MeshLambertMaterial({
-            emissive: 0xffffff
+            emissive: 0xffffff,
+            color: 0x000000
         });
         const tube = new CylinderGeometry( this.width, this.width, this.height );
         const mesh = new Mesh( tube, material );
+        this.tubeMaterial = material;
+        this.mesh = mesh;
+
         return mesh;
+    }
+
+    glitch( max = false ) {
+        this.time += 0.45;
+        let noiseVal = this.noise.getVal( this.time );
+
+        this.light.intensity = ( max ) ? 7000 : noiseVal * 7000;
+        let col = Math.floor( 255 * noiseVal );
+        col = col.toString(16);
+        this.tubeMaterial.emissive.setHex( ( max ) ? 0xffffff : `0x${col}${col}${col}` );
     }
 
     render() {
@@ -63,4 +82,3 @@ class Neon {
 }
 
 export default Neon;
-

@@ -73,7 +73,11 @@ const render = () => {
 	});
 	tau += 0.01;
 
-	neonLeft.light.intensity = Math.random() * 7000;
+	if( Math.floor(tau)%4 == 0 ) {
+		neonLeft.glitch();
+	} else {
+		neonLeft.glitch(true);
+	}
 
 	// world.setCamera();
 };

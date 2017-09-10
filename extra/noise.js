@@ -19,9 +19,8 @@ var Simple1DNoise = function() {
         var t = scaledX - xFloor;
         var tRemapSmoothstep = t * t * ( 3 - 2 * t );
 
-        /// Modulo using &#038;
-        var xMin = xFloor &#038; MAX_VERTICES_MASK;
-        var xMax = ( xMin + 1 ) &#038; MAX_VERTICES_MASK;
+        var xMin = xFloor % MAX_VERTICES_MASK;
+        var xMax = ( xMin + 1 ) % MAX_VERTICES_MASK;
 
         var y = lerp( r[ xMin ], r[ xMax ], tRemapSmoothstep );
 
