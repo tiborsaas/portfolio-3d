@@ -1,5 +1,5 @@
 import {
-    MeshPhongMaterial,
+    MeshStandardMaterial,
     PlaneGeometry,
     Mesh
 } from 'three';
@@ -10,10 +10,11 @@ class Floor {
     }
 
     getMaterial( color ) {
-        return new MeshPhongMaterial({
+        return new MeshStandardMaterial({
             color: color,
             flatShading: true,
-            shininess: 0.1
+            metalness: 0.3,
+            roughness: 0.7
         });
     }
 
