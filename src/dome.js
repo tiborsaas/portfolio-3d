@@ -14,8 +14,8 @@ class Dome {
         return new MeshStandardMaterial({
             color: color,
             flatShading: true,
-            metalness: 0.2,
-            roughness: 0.6,
+            metalness: 0.4,
+            roughness: 0.7,
             side: BackSide,
         });
     }
@@ -37,7 +37,7 @@ class Dome {
         sphere.verticesNeedUpdate = true;
         sphere.normalsNeedUpdate = true;
 
-        let material = this.getMaterial( 0x333333 );
+        let material = this.getMaterial( 0x0088ff );
         let envMesh = new Mesh( sphere, material );
         this.scene.add(envMesh)
     }
