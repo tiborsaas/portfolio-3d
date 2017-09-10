@@ -30,12 +30,14 @@ class Neon {
     createAreaLight() {
         const intensity = 7000.0;
         const rectLight = new RectAreaLight( 0xffffff, intensity,  this.width, this.height );
+        this.light = rectLight;
 
         if( this.debugAreaLight ) {
             rectLight.position.set(5,0,0);
             let helper = new RectAreaLightHelper( rectLight );
             this.scene.add(helper)
         }
+
         return rectLight;
     }
 
