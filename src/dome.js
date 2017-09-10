@@ -1,5 +1,5 @@
 import {
-    MeshPhongMaterial,
+    MeshStandardMaterial,
     SphereBufferGeometry,
     Mesh,
     BackSide
@@ -11,10 +11,11 @@ class Dome {
     }
 
     getMaterial( color ) {
-        return new MeshPhongMaterial({
+        return new MeshStandardMaterial({
             color: color,
             flatShading: true,
-            shininess: 0,
+            metalness: 0.2,
+            roughness: 0.6,
             side: BackSide,
         });
     }

@@ -20,7 +20,7 @@ class Logo {
         this.standardMaterial = null;
         
         this.createMaterial();
-        this.loadTextures();
+        // this.loadTextures();
     }
     
     createLogoShapes() {
@@ -91,11 +91,11 @@ class Logo {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
             map.anisotropy = 4;
-            map.repeat.set( 0.5, 0.5 );
-            // this.standardMaterial.roughnessMap = map;
-            // this.standardMaterial.roughness = 0.8;
+            map.repeat.set( 2, 2 );
+            this.standardMaterial.roughnessMap = map;
+            this.standardMaterial.roughness = 0.8;
             this.standardMaterial.normalMap = map;
-            this.standardMaterial.normalScale.set( 1, 1 ).multiplyScalar( 0.12 );
+            this.standardMaterial.normalScale.set( 1, 1 ).multiplyScalar( 0.52 );
             this.standardMaterial.needsUpdate = true;
         });
 

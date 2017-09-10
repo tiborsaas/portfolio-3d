@@ -45,8 +45,8 @@ logo.render();
 
 let lights = new Lights( world.scene );
 lights.createPointLight( 230, 90, 230, 0xee0011, 1 );
-// lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
-// lights.createPointLight( 0, -30, -5, 2 );
+lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
+lights.createPointLight( 0, -30, -5, 2 );
 lights.addHemisphereLight( 0x2200ff, 0x000000 );
 
 let tau = 0;
