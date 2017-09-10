@@ -23,7 +23,7 @@ import Logo from './src/logo';
 import Dome from './src/dome';
 import Floor from './src/floor';
 import Lights from './src/lights';
-
+import Neon from './src/neon-light';
 
 let world = new World();
 world.camera.position.z = 140;
@@ -48,6 +48,13 @@ lights.createPointLight( 230, 60, 230, 0xee0011, 1 );
 lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
 lights.createPointLight( 0, -30, -5, 2 );
 lights.addHemisphereLight( 0x2200ff, 0x000000 );
+
+let neon = new Neon( world.scene, 3, 120 );
+neon.render();
+neon.mesh.position.x = 80;
+neon.mesh.position.y = -30;
+neon.mesh.rotateX( 90 * Math.PI/180 );
+neon.mesh.rotateZ( 30 * Math.PI/180 );
 
 let tau = 0;
 const render = () => {
