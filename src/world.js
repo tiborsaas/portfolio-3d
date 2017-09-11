@@ -4,15 +4,6 @@ import {
     WebGLRenderer
 } from 'three';
 
-// var textureLoader = new TextureLoader();
-// textureEquirec = textureLoader.load( "assets/04.jpg" );
-// textureEquirec.mapping = EquirectangularReflectionMapping;
-// textureEquirec.magFilter = LinearFilter;
-// textureEquirec.minFilter = LinearMipMapLinearFilter;
-
-// var geometry = new SphereBufferGeometry( 500, 60, 40 );
-// geometry.scale( 1, 1, -1 );
-
 class World {
     constructor() {
         this.mouse = { x: 0, y:0 };
