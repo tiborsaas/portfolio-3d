@@ -44,7 +44,7 @@ let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 230, 60, 230, 0xee0011, 1 );
+lights.createPointLight( 230, 60, 230, 0xDC143C, 1 );
 lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
 lights.addHemisphereLight( 0x2200ff, 0x000000 );
 
