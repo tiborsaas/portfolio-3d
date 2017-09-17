@@ -11,6 +11,7 @@ class Dome {
     }
 
     getMaterial( color ) {
+
         return new MeshStandardMaterial({
             color: color,
             flatShading: true,

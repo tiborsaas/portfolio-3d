@@ -20,7 +20,7 @@ class Logo {
         this.standardMaterial = null;
         
         this.createMaterial();
-        // this.loadTextures();
+        this.loadTextures();
     }
     
     createLogoShapes() {
@@ -81,7 +81,6 @@ class Logo {
             color: 0xffffff,
             metalness: 0.8,
             roughness: 0.5,
-            // envMap: textureEquirec
         });
     }
 
@@ -91,24 +90,23 @@ class Logo {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
             map.anisotropy = 4;
-            map.repeat.set( 2, 2 );
-            this.standardMaterial.roughnessMap = map;
-            this.standardMaterial.roughness = 0.8;
+            map.repeat.set( 0.1, 0.1);
             this.standardMaterial.normalMap = map;
-            this.standardMaterial.normalScale.set( 1, 1 ).multiplyScalar( 0.52 );
+            this.standardMaterial.normalScale.set( 1, 1 ).multiplyScalar( 0.4 );
             this.standardMaterial.needsUpdate = true;
         });
 
-        textureLoader.load( "./assets/silver.jpg", map => {
+        const mapLoader = new TextureLoader();
+
+        mapLoader.load( "./assets/scratch_dpm.jpg", map => {
+            map.wrapS = RepeatWrapping;
+            map.wrapT = RepeatWrapping;
+            map.anisotropy = 4;
+            map.repeat.set( 0.005, 0.005);
             this.standardMaterial.map = map;
+            this.standardMaterial.roughnessMap = map;
+            this.standardMaterial.roughness = 0.75;
             this.standardMaterial.needsUpdate = true;
-        });
-
-        textureLoader.load( "./assets/tile.png", map => {
-            this.standardMaterial.displacementMap = map;
-            this.standardMaterial.displacementScale = 0.5;
-            this.standardMaterial.needsUpdate = true;
-            this.standardMaterial.displacementMap.needsUpdate = true;
         });
     }
 
