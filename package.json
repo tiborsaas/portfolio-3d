@@ -28,7 +28,6 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "dat.gui": "^0.6.1",
     "three": "github:mrdoob/three.js#dev"
   },
   "deprecated": false,
