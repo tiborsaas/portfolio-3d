@@ -90,22 +90,21 @@ class Logo {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
             map.anisotropy = 4;
-            map.repeat.set( 0.1, 0.1);
             this.standardMaterial.normalMap = map;
-            this.standardMaterial.normalScale.set( 1, 1 ).multiplyScalar( 0.4 );
+            this.standardMaterial.normalScale.set( 0.05, 0.05 );
             this.standardMaterial.needsUpdate = true;
         });
 
         const mapLoader = new TextureLoader();
 
-        mapLoader.load( "./assets/scratch_dpm.jpg", map => {
+        mapLoader.load( "./assets/2621-normal.jpg", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
-            map.anisotropy = 4;
-            map.repeat.set( 0.005, 0.005);
+            map.anisotropy = 2;
+            map.repeat.set( 0.005, 0.05);
             this.standardMaterial.map = map;
             this.standardMaterial.roughnessMap = map;
-            this.standardMaterial.roughness = 0.75;
+            this.standardMaterial.roughness = 0.48;
             this.standardMaterial.needsUpdate = true;
         });
     }
