@@ -29,7 +29,7 @@ let world = new World();
 world.camera.position.z = 140;
 
 document.addEventListener( 'mousemove', event => {
-	world.updateMouse( event.clientX, event.clientY );
+	// world.updateMouse( event.clientX, event.clientY );
 });
 
 let dome = new Dome( world.scene );

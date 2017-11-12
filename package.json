@@ -28,6 +28,7 @@
   },
   "bundleDependencies": false,
   "dependencies": {
+    "controlkit": "^0.1.9",
     "three": "github:mrdoob/three.js#dev"
   },
   "deprecated": false,
