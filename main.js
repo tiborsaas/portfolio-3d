@@ -29,10 +29,8 @@ let world = new World();
 world.camera.position.z = 140;
 
 document.addEventListener( 'mousemove', event => {
-	// world.updateMouse( event.clientX, event.clientY );
+	world.updateMouse( event.clientX, event.clientY );
 });
-
-const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
 dome.render( 300, 10 );
@@ -79,7 +77,7 @@ const render = () => {
 		neonLeft.glitch(true);
 	}
 
-	// world.setCamera();
+	world.setCamera();
 };
 
 render();
