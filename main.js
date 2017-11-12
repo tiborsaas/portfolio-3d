@@ -42,8 +42,9 @@ let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 230, 60, 230, 0xDC143C, 1 );
-lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
+lights.createPointLight( 230, 60, 230, 0x43ffba, 1 );
+lights.createPointLight( -250, 40, -250, 0x256eff, 1 );
+lights.createPointLight( 65, 20, 250, 0x43ffba, 0.2 );
 lights.addHemisphereLight( 0x0000ff, 0x0000ff );
 
 let neon = new Neon( world.scene, 2, 120 );

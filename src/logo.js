@@ -78,9 +78,9 @@ class Logo {
     createMaterial() {
         this.standardMaterial = new MeshStandardMaterial({
             map: null,
-            color: 0xffffff,
-            metalness: 0.8,
-            roughness: 0.5,
+            color: 0x46237a,
+            metalness: 1.2,
+            roughness: 0.99,
         });
     }
 
@@ -97,14 +97,14 @@ class Logo {
 
         const mapLoader = new TextureLoader();
 
-        mapLoader.load( "./assets/2621-normal.jpg", map => {
+        mapLoader.load( "./assets/gold-nm.jpg", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
             map.anisotropy = 2;
-            map.repeat.set( 0.005, 0.05);
+            map.repeat.set( 0.005, 0.005);
             this.standardMaterial.map = map;
+            this.standardMaterial.metalnessMap = map;
             this.standardMaterial.roughnessMap = map;
-            this.standardMaterial.roughness = 0.48;
             this.standardMaterial.needsUpdate = true;
         });
     }
