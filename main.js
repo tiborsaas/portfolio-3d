@@ -25,7 +25,6 @@ import Floor from './src/floor';
 import Lights from './src/lights';
 import Neon from './src/neon-light';
 
-
 let world = new World();
 world.camera.position.z = 140;
 
@@ -36,7 +35,7 @@ document.addEventListener( 'mousemove', event => {
 const controls = new OrbitControls(world.camera);
 
 let dome = new Dome( world.scene );
-dome.render( 250, 25 );
+dome.render( 300, 10 );
 
 let floor = new Floor( world.scene );
 floor.render( 500, 20 );
@@ -47,7 +46,7 @@ logo.render();
 let lights = new Lights( world.scene );
 lights.createPointLight( 230, 60, 230, 0xDC143C, 1 );
 lights.createPointLight( -250, 40, -250, 0xaa00de, 1 );
-lights.addHemisphereLight( 0x2200ff, 0x000000 );
+lights.addHemisphereLight( 0x0000ff, 0x0000ff );
 
 let neon = new Neon( world.scene, 2, 120 );
 neon.render();
