@@ -78,7 +78,7 @@ const render = () => {
 		neonLeft.glitch(true);
 	}
 
-	world.setCamera();
+	//world.setCamera();
 };
 
 render();
