@@ -20,6 +20,10 @@ class World {
         document.addEventListener( 'mousemove', event => {
             this.updateMouse(event.clientX, event.clientY);
         });
+
+        document.addEventListener( 'touchmove', event => {
+            this.updateMouse(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+        });
     }
 
     createWorld() {
