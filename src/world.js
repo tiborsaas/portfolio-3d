@@ -16,8 +16,12 @@ class World {
         this.setCanvasSize();
         this.createCamera();
         this.initResizeEvent();
+
+        document.addEventListener( 'mousemove', event => {
+            this.updateMouse(event.clientX, event.clientY);
+        });
     }
-        
+
     createWorld() {
         this.scene = new Scene();
         this.renderer = new WebGLRenderer({antialias:true});
@@ -47,12 +51,13 @@ class World {
 
     setCamera() {
         this.camera.position.x += ( this.mouse.x - this.camera.position.x ) * .1;
-        this.camera.position.y += ( - this.mouse.y - this.camera.position.y ) * .1;
+        this.camera.position.y += ( this.mouse.y - this.camera.position.y ) * .1;
     }
 
     updateMouse( x,y ) {
-        x = (x - (window.innerWidth / 2)) / 30;
-        y = (y - (window.innerHeight / 2)) / 100;
+        let offset = padDefault.getScale();
+        x = offset.x + (x - (window.innerWidth / 2)) / 30;
+        y = offset.y + (y - (window.innerHeight / 2)) / 100;
         this.mouse = { x, y };
     }
 }

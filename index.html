@@ -11,11 +11,36 @@
             padding: 0;
             background: black;
         }
+
+        main {
+            position: absolute;
+            right: 0;
+            top: 100px;
+            width: 400px;
+            padding: 0.5rem 2rem 6rem 2rem;
+            color: #000;
+            font-family: Arial;
+            font-family: 'Zilla Slab Highlight', cursive;
+            background: rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 2rem;
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight" rel="stylesheet">
 </head>
 <body>
-    <script type='text/javascript' src='extra/controlKit.js'></script>
-    <script src="build/bundle.js"></script>
+    <main>
+        <h1>TIBORSAAS</h1>
+        <p>full stack developer</p>
+        <article>
+            <a href="">list projects</a>            
+        </article>
+    </main>
+    <script src='extra/controlKit.js'></script>
     <script src="src/controlKitConfig.js"></script>
+    <script src='src/controlKitStarter.js'></script>
+    <script src="build/bundle.js"></script>
 </body>
 </html>

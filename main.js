@@ -28,10 +28,6 @@ import Neon from './src/neon-light';
 let world = new World();
 world.camera.position.z = 140;
 
-document.addEventListener( 'mousemove', event => {
-	// world.updateMouse( event.clientX, event.clientY );
-});
-
 let dome = new Dome( world.scene );
 dome.render( 300, 10 );
 
@@ -78,7 +74,9 @@ const render = () => {
 		neonLeft.glitch(true);
 	}
 
-	//world.setCamera();
+	world.setCamera();
 };
 
+world.updateMouse( window.innerWidth / 2, window.innerHeight / 2 );
 render();
+startControlKit();
