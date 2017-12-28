@@ -45607,7 +45607,7 @@ class Logo {
         this.standardMaterial = null;
         
         this.createMaterial();
-        // this.loadTextures();
+        this.loadTextures();
     }
     
     createLogoShapes() {
