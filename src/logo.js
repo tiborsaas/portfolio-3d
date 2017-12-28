@@ -91,16 +91,15 @@ class Logo {
             map.wrapT = RepeatWrapping;
             map.anisotropy = 4;
             this.standardMaterial.normalMap = map;
-            this.standardMaterial.normalScale.set( 0.05, 0.05 );
+            this.standardMaterial.normalScale.set( 0.5, 0.5 );
             this.standardMaterial.needsUpdate = true;
         });
 
         const mapLoader = new TextureLoader();
-
         mapLoader.load( "./assets/gold-nm.jpg", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
-            map.anisotropy = 2;
+            map.anisotropy = 4;
             map.repeat.set( 0.005, 0.005);
             this.standardMaterial.map = map;
             this.standardMaterial.metalnessMap = map;

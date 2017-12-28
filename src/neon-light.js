@@ -11,6 +11,7 @@ import {
 } from 'three';
 
 import Noise from '../extra/noise';
+// import LT from '../extra/RectAreaLightUniformsLib.legacy';
 
 /**
  * Creates an emissive cylinder and a matching rect area light
@@ -33,14 +34,14 @@ class Neon {
     }
 
     createAreaLight() {
-        const intensity = 7000.0;
+        const intensity = 5000.0;
         const rectLight = new RectAreaLight( 0xffffff, intensity,  this.width, this.height );
         this.light = rectLight;
 
         if( this.debugAreaLight ) {
             rectLight.position.set(5,0,0);
-            let helper = new RectAreaLightHelper( rectLight );
-            this.scene.add(helper)
+            // let helper = new RectAreaLightHelper( rectLight );
+            // this.scene.add(helper)
         }
 
         return rectLight;

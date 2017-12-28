@@ -13,8 +13,8 @@ class Floor {
         return new MeshStandardMaterial({
             color: color,
             flatShading: true,
-            metalness: 0.3,
-            roughness: 0.7
+            metalness: 0.4,
+            roughness: 0.7,
         });
     }
 
@@ -36,6 +36,7 @@ class Floor {
         floorMesh.position.y = -35;
 
         this.scene.add( floorMesh );
+
     }
 }
 

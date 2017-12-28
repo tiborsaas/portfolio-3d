@@ -29,7 +29,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "controlkit": "^0.1.9",
-    "three": "github:mrdoob/three.js#dev"
+    "three": "github:mrdoob/three.js"
   },
   "deprecated": false,
   "description": "Three.js ES6 boilerplate that uses Rollup and the ES6 modules",
