@@ -18,6 +18,7 @@ import {
 } from 'three';
 
 import {OrbitControls} from './extra/OrbitControls.legacy';
+import {} from './extra/RectAreaLightUniformsLib.es6.js';
 import World from './src/world';
 import Logo from './src/logo';
 import Dome from './src/dome';
@@ -38,9 +39,9 @@ let logo = new Logo( world.scene );
 logo.render();
 
 let lights = new Lights( world.scene );
-lights.createPointLight( 230, 60, 230, 0x43ffba, 1 );
-lights.createPointLight( -250, 40, -250, 0x256eff, 1 );
-lights.createPointLight( 65, 20, 250, 0x43ffba, 0.2 );
+lights.createPointLight( 230, 60, 230, 0x4300ba, 1 );
+lights.createPointLight( -250, 40, -250, 0x953e33, 1 );
+lights.createPointLight( 65, 20, 250, 0x4300ba, 0.2 );
 lights.addHemisphereLight( 0x0000ff, 0x0000ff );
 
 let neon = new Neon( world.scene, 2, 120 );
@@ -74,7 +75,7 @@ const render = () => {
 		neonLeft.glitch(true);
 	}
 
-	world.setCamera();
+	//world.setCamera();
 };
 
 world.updateMouse( window.innerWidth / 2, window.innerHeight / 2 );

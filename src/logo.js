@@ -78,33 +78,28 @@ class Logo {
     createMaterial() {
         this.standardMaterial = new MeshStandardMaterial({
             map: null,
-            color: 0x46237a,
-            metalness: 1.2,
-            roughness: 0.99,
+            color: 0xffffff,
+            metalness: 1.0,
+            roughness: 0.45,
         });
     }
 
     loadTextures() {
         const textureLoader = new TextureLoader();
-        textureLoader.load( "./assets/Pluto_Normal.jpg", map => {
+        textureLoader.load( "./assets/greasy-pan-2-albedo.png", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
-            map.anisotropy = 4;
-            this.standardMaterial.normalMap = map;
-            this.standardMaterial.normalScale.set( 0.5, 0.5 );
+            map.repeat.set( 0.01, 0.01);
+            this.standardMaterial.map = map;
             this.standardMaterial.needsUpdate = true;
         });
 
         const mapLoader = new TextureLoader();
-        mapLoader.load( "./assets/gold-nm.jpg", map => {
+        mapLoader.load( "./assets/greasy-pan-2-normal.png", map => {
             map.wrapS = RepeatWrapping;
             map.wrapT = RepeatWrapping;
-            map.anisotropy = 4;
-            map.repeat.set( 0.005, 0.005);
-            this.standardMaterial.map = map;
-            this.standardMaterial.metalnessMap = map;
-            this.standardMaterial.roughnessMap = map;
-            this.standardMaterial.needsUpdate = true;
+            map.repeat.set( 0.01, 0.01);
+            this.standardMaterial.normalMap = map;
         });
     }
 
